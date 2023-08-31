@@ -11,6 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
       rel="stylesheet"
     />
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/478c67526d.js" crossorigin="anonymous"></script>
     <!-- daisy ui links -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css"
@@ -42,13 +44,51 @@
       <!-- navbar -->
       <nav class="flex flex-row justify-between mt-7  items-center mx-5 mb-0 md:mb-6">
         <div class="w-28"><img src="./images/Logo.png" alt="" /></div>
-        <div class="hidden md:flex"><button class="btn">Sort By View</button></div>
-        <div><button class=" active-btn">Blog</button></div>
+        <div class="hidden md:flex"><button id="sort-by-view-btn" class="btn">Sort By View</button></div>
+        <div><button class="px-5 py-2 bg-[#FF1F3D] text-white rounded-lg " onclick="blog()">Blog</button></div>
       </nav>
-      <div class="mb-6 flex md:hidden justify-center"><button class="inactive-btn">Sort By View</button></div>
+      <div class="mb-6 flex md:hidden justify-center"><button class="px-5 py-2 bg-[#25252533] text-black rounded-lg">Sort By View</button></div>
       <hr>
     </header>
-    <main class="class="max-w-7xl mx-auto""></main>
+    
+    <main class="max-w-7xl mx-auto pt-5">
+        <!-- tabs -->
+        <div id="tab-container" class="flex justify-center gap-5">
+            <!-- <button class="active-btn">All</button>
+            <button class="inactive-btn">Music</button>
+            <button class="inactive-btn">Music</button>
+            <button class="inactive-btn">Music</button>
+             -->
+        </div>
+        <section class="mt-10">
+            <!-- video container -->
+            <div id="video-container" class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-fit mx-auto">
+                <div class="w-80">
+                    <div class="w-full pb-5 relative ">
+                        <img class="rounded-lg" src="https://i.ibb.co/L1b6xSq/shape.jpg" alt="">
+                        <button disabled  class="bg-black text-xs text-white p-1 rounded-md translate-x-48 -translate-y-10 absolute disabled:cursor-default	">image upload time</button>
+                    </div>
+                    <!-- video desc -->
+                    <div class="flex flex-row">
+                        <img class="w-9 h-9 rounded-full" src="https://i.ibb.co/D9wWRM6/olivia.jpg" alt="">
+                        <div class=" ml-4">
+                            <h4 class="text-base font-bold">Building a Winning UX Strategy Using the Kano Model</h4>
+                            <h5 class="text-sm font-normal">Awlad Hossain<i id="verified-badge" class="pl-3 font-[#2568EF] fa-solid fa-certificate"></i></h5>
+                            <p>91K views</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- no video image -->
+            <div id="no-video-alert" class="hidden">
+              <div class="flex flex-col justify-center items-center">
+                  <img src="./images/Icon.png" alt="">
+                <h1 class="font-semibold text-3xl">Oops!! Sorry, There is no content here</h1>
+              </div>
+            </div>
+            </div>
+        </section>
+    </main>
     <footer class="class="max-w-7xl mx-auto""></footer>
     <script src="./scripts/index.js"></script>
   </body>

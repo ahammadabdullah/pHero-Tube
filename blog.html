@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pHero Tube</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome -->
+    <script
+      src="https://kit.fontawesome.com/478c67526d.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- daisy ui links -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header class="max-w-7xl mx-auto">
+      <!-- navbar -->
+      <nav
+        class="flex flex-row justify-between mt-7 items-center mx-5 mb-0 md:mb-6"
+      >
+        <div class="w-28 cursor-pointer">
+          <img onclick="homePage()" src="./images/Logo.png" alt="" />
+        </div>
+        <div class="hidden md:flex">
+          <button class="btn hidden">Sort By View</button>
+        </div>
+        <div>
+          <button
+            class="px-5 py-2 bg-[#FF1F3D] text-white rounded-lg"
+            onclick="blog()"
+          >
+            Blog
+          </button>
+        </div>
+      </nav>
+      <div class="mb-6 flex md:hidden justify-center">
+        <button class="px-5 py-2 bg-[#25252533] text-black rounded-lg">
+          Sort By View
+        </button>
+      </div>
+      <hr />
+    </header>
+    <main>
+      <!-- accordion section -->
+      <section class="max-w-7xl mx-auto pt-5">
+        <div class="collapse collapse-plus bg-base-200">
+          <input type="radio" name="my-accordion-3" checked="checked" />
+          <div class="collapse-title text-xl font-medium">
+            Discuss the scope of var, let, and const
+          </div>
+          <div class="collapse-content">
+            <p>
+              var has function/global scope, hoists, and can lead to unintended
+              behavior. let and const (ES6) offer block scope, preventing
+              variable leakage. let allows reassignment, const ensures
+              immutability. They have a "temporal dead zone" preventing use
+              before initialization. Using let and const is recommended due to
+              better scoping mechanisms and predictability compared to var.
+            </p>
+          </div>
+        </div>
+        <div class="collapse collapse-plus bg-base-200">
+          <input type="radio" name="my-accordion-3" />
+          <div class="collapse-title text-xl font-medium">
+            Tell us the use cases of null and undefined
+          </div>
+          <div class="collapse-content">
+            <p>
+              `null` and `undefined` are both values that represent the absence
+              of meaningful data in JavaScript. `undefined` is the default value
+              of uninitialized variables or when a function lacks a return
+              statement. It indicates missing values or properties. `null` is
+              assigned to variables when they should intentionally have no
+              value. It's often used to reset or clear a value. In summary,
+              `undefined` typically arises naturally, while `null` is used
+              deliberately to represent emptiness or nonexistence. Both are
+              essential for indicating and handling missing or empty data in
+              programming.
+            </p>
+          </div>
+        </div>
+        <div class="collapse collapse-plus bg-base-200">
+          <input type="radio" name="my-accordion-3" />
+          <div class="collapse-title text-xl font-medium">
+            What do you mean by REST API?
+          </div>
+          <div class="collapse-content">
+            <p>
+              A REST API (Representational State Transfer Application
+              Programming Interface) is a standardized way for software
+              applications to communicate over the internet. It uses HTTP
+              methods (GET, POST, PUT, DELETE) to interact with resources like
+              data or services on a server. REST APIs follow principles of
+              statelessness and resource-based interactions. Clients request
+              data or perform actions by sending HTTP requests to specific
+              endpoints. The server responds with data or status codes. REST
+              APIs are widely used for building web services, allowing different
+              applications to exchange data and functionality seamlessly, making
+              them a fundamental component of modern web development.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      const homePage = () => {
+        window.location.href = "index.html";
+      };
+    </script>
+  </body>
+</html>

@@ -23,17 +23,30 @@
       * {
         font-family: "Inter", sans-serif;
       }
+      .active-btn{
+        background-color: #FF1F3D;
+        border-radius: 8px;
+        color: white;
+        padding: 10px 20px;
+      }
+      .inactive-btn{
+        color:black;
+        background-color: #25252533;
+        border-radius: 8px;
+        padding: 10px 20px;
+      }
     </style>
   </head>
   <body>
     <header class="max-w-7xl mx-auto">
       <!-- navbar -->
-      <nav class="flex flex-row justify-between mt-7 items-center mx-5">
+      <nav class="flex flex-row justify-between mt-7  items-center mx-5 mb-0 md:mb-6">
         <div class="w-28"><img src="./images/Logo.png" alt="" /></div>
         <div class="hidden md:flex"><button class="btn">Sort By View</button></div>
-        <div><button class="btn">Blog</button></div>
+        <div><button class=" active-btn">Blog</button></div>
       </nav>
-      <div class="flex md:hidden justify-center"><button class="btn">Sort By View</button></div>
+      <div class="mb-6 flex md:hidden justify-center"><button class="inactive-btn">Sort By View</button></div>
+      <hr>
     </header>
     <main class="class="max-w-7xl mx-auto""></main>
     <footer class="class="max-w-7xl mx-auto""></footer>

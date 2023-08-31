@@ -9,10 +9,9 @@ const handleTab = async () => {
   data.forEach((tab) => {
     const btn = document.createElement("button");
     btn.innerHTML = `
-    <a onclick="handleLoadVideo(${tab.category_id})">${tab.category}</a>
+    <a class="tabs" onclick="handleLoadVideo(${tab.category_id}); handleTabs();">${tab.category}</a>
     `;
     tabContainer.appendChild(btn);
-    btn.classList.add("inactive-btn");
   });
 };
 
@@ -54,9 +53,11 @@ const handleLoadVideo = async (categoryID) => {
             <img class="rounded-lg h-[180px] w-[320px]" src="${
               video?.thumbnail
             }" alt="">
-                <button id="img-badge" disabled onclick="hideAddClass(this)" class="bg-black text-xs text-white p-1 rounded-md translate-x-48 -translate-y-10 absolute disabled:cursor-default image-badge ">${secToHours(
-                  uploadTime
-                )}
+                <button id="img-badge" disabled onclick="hideAddClass(this)" class="${
+                  uploadTime > 0 ? "block" : "hidden"
+                } bg-black text-xs text-white p-1 rounded-md translate-x-48 -translate-y-10 absolute disabled:cursor-default image-badge ">${secToHours(
+      uploadTime
+    )}
                 </button>
         </div>
             <!-- video desc -->
@@ -68,7 +69,9 @@ const handleLoadVideo = async (categoryID) => {
                 <h4 class="text-base font-bold">${video?.title}</h4>
                 <h5 class="text-sm font-normal">${
                   video?.authors[0]?.profile_name
-                }<i id="verified-badge" class="pl-3 font-[#2568EF] fa-solid fa-certificate"></i></h5>
+                }<i id="verified-badge" class="${
+      video?.authors[0]?.verified === true ? "inline" : "hidden"
+    } pl-3 font-[#2568EF] fa-solid fa-certificate"></i></h5>
                 <p>${video?.others?.views}</p>
                 </div>
             </div>
@@ -78,14 +81,23 @@ const handleLoadVideo = async (categoryID) => {
     videoContainer.appendChild(div);
   });
 };
-/* const handleSelectedButton = (element) => {
-  console.log(element);
-  element.classList.remove("inactive-btn");
-  element.classList.add("active-btn");
-}; */
 
+const handleTabs = () => {
+  const tabs = document.querySelectorAll(".tabs");
+  console.log(tabs);
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((tab) => {
+        tab.classList.remove("active-btn");
+      });
+      tab.classList.add("active-btn");
+      console.log(tab);
+    });
+  });
+};
 const blog = () => {
   window.location.href = "blog.html";
 };
 handleTab();
+handleTabs();
 handleLoadVideo(1000);

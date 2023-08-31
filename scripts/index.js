@@ -9,7 +9,7 @@ const handleTab = async () => {
   data.forEach((tab) => {
     const btn = document.createElement("button");
     btn.innerHTML = `
-    <a onclick="handleLoadVideo(${tab.category_id});handleSelectedButton(this);">${tab.category}</a>
+    <a onclick="handleLoadVideo(${tab.category_id})">${tab.category}</a>
     `;
     tabContainer.appendChild(btn);
     btn.classList.add("inactive-btn");
@@ -17,7 +17,6 @@ const handleTab = async () => {
 };
 
 const handleLoadVideo = async (categoryID) => {
-  console.log(categoryID);
   const res = await fetch(
     `https://openapi.programming-hero.com/api/videos/category/${categoryID}`
   );
@@ -30,7 +29,6 @@ const handleLoadVideo = async (categoryID) => {
 
     console.log(descendedArr);
   }); */
-  console.log(data);
   const videoContainer = document.getElementById("video-container");
   videoContainer.innerHTML = "";
   const noVideoAlert = document.getElementById("no-video-alert");
@@ -91,4 +89,3 @@ const blog = () => {
 };
 handleTab();
 handleLoadVideo(1000);
-handleSortByView();

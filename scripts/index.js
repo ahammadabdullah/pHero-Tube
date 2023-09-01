@@ -63,16 +63,17 @@ const handleLoadVideo = async (categoryID) => {
             }" alt="">
             <div class=" ml-4">
                 <h4 class="text-base font-bold">${video?.title}</h4>
+                <div class="flex flex-row">
                 <h5 class="text-sm font-normal">${
                   video?.authors[0]?.profile_name
-                }<i id="verified-badge" class="${
+                }</h5> <img class="${
       video?.authors[0]?.verified === true ? "inline" : "hidden"
-    } pl-3 font-[#2568EF] fa-solid fa-certificate"></i></h5>
+    } pl-2 font-[#2568EF] fa-solid fa-certificate" src="./images/verified-badge.png" alt="">
+                </div>
                 <p>${video?.others?.views}</p>
                 </div>
             </div>
         </div>
-    
     `;
     div.classList.add("video");
     videoContainer.appendChild(div);

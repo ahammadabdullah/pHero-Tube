@@ -95,7 +95,6 @@ const handleTabs = () => {
 function sortByViewData() {
   const videoContainer = document.getElementById("video-container");
   const videos = Array.from(videoContainer.querySelectorAll("div.video"));
-  console.log(videos);
   videos.sort((a, b) => {
     const viewsA = parseInt(
       a.querySelector("p").textContent.replace(/[^\d]/g, "")
@@ -107,7 +106,6 @@ function sortByViewData() {
   });
   const sortByViewBtn = document.getElementById("sort-by-view-btn");
   sortByViewBtn.addEventListener("click", () => {
-    console.log("clicked");
     sortByViewData();
   });
 

@@ -20,14 +20,20 @@ const handleLoadVideo = async (categoryID) => {
     `https://openapi.programming-hero.com/api/videos/category/${categoryID}`
   );
   const rcvdData = await res.json();
-  const data = rcvdData.data;
+  let data = rcvdData.data;
   /*   const sortByViewBtn = document.getElementById("sort-by-view-btn");
   sortByViewBtn.addEventListener("click", () => {
-    const updatedArr = data.map((data) => data.others?.views);
-    const descendedArr = updatedArr.sort((a, b) => b - a);
+    data = sortArrayByViewsDescending(data);
+  });
 
-    console.log(descendedArr);
-  }); */
+  function sortArrayByViewsDescending(array) {
+    return array.sort((a, b) => {
+      const viewsA = parseInt(a.others.views.replace(/[^\d]/g, ""));
+      const viewsB = parseInt(b.others.views.replace(/[^\d]/g, ""));
+      return viewsB - viewsA;
+    });
+  } */
+
   const videoContainer = document.getElementById("video-container");
   videoContainer.innerHTML = "";
   const noVideoAlert = document.getElementById("no-video-alert");
@@ -84,14 +90,12 @@ const handleLoadVideo = async (categoryID) => {
 
 const handleTabs = () => {
   const tabs = document.querySelectorAll(".tabs");
-  console.log(tabs);
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
       tabs.forEach((tab) => {
         tab.classList.remove("active-btn");
       });
       tab.classList.add("active-btn");
-      console.log(tab);
     });
   });
 };

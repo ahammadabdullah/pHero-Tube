@@ -21,18 +21,6 @@ const handleLoadVideo = async (categoryID) => {
   );
   const rcvdData = await res.json();
   let data = rcvdData.data;
-  /*   const sortByViewBtn = document.getElementById("sort-by-view-btn");
-  sortByViewBtn.addEventListener("click", () => {
-    data = sortArrayByViewsDescending(data);
-  });
-
-  function sortArrayByViewsDescending(array) {
-    return array.sort((a, b) => {
-      const viewsA = parseInt(a.others.views.replace(/[^\d]/g, ""));
-      const viewsB = parseInt(b.others.views.replace(/[^\d]/g, ""));
-      return viewsB - viewsA;
-    });
-  } */
 
   const videoContainer = document.getElementById("video-container");
   videoContainer.innerHTML = "";
@@ -55,16 +43,18 @@ const handleLoadVideo = async (categoryID) => {
 
     div.innerHTML = `
     <div class="w-80">
-        <div class="pb-5 relative ">
+        <div class="pb-5  ">
             <img class="rounded-lg h-[180px] w-[320px]" src="${
               video?.thumbnail
             }" alt="">
-                <button id="img-badge" disabled onclick="hideAddClass(this)" class="${
-                  uploadTime > 0 ? "block" : "hidden"
-                } bg-black text-xs text-white p-1 rounded-md translate-x-48 -translate-y-10 absolute disabled:cursor-default image-badge ">${secToHours(
+            <div class="flex justify-end -translate-y-10 -translate-x-4 relative">
+              <button id="img-badge" disabled" class="${
+                uploadTime > 0 ? "block" : "hidden"
+              } bg-black text-xs  text-white p-1 rounded-md absolute  disabled:cursor-default image-badge ">${secToHours(
       uploadTime
     )}
-                </button>
+              </button>
+            </div>
         </div>
             <!-- video desc -->
         <div class="flex flex-row">
@@ -84,6 +74,7 @@ const handleLoadVideo = async (categoryID) => {
         </div>
     
     `;
+    div.classList.add("video");
     videoContainer.appendChild(div);
   });
 };
@@ -99,6 +90,32 @@ const handleTabs = () => {
     });
   });
 };
+
+function sortByViewData() {
+  const videoContainer = document.getElementById("video-container");
+  const videos = Array.from(videoContainer.querySelectorAll("div.video"));
+  console.log(videos);
+  videos.sort((a, b) => {
+    const viewsA = parseInt(
+      a.querySelector("p").textContent.replace(/[^\d]/g, "")
+    );
+    const viewsB = parseInt(
+      b.querySelector("p").textContent.replace(/[^\d]/g, "")
+    );
+    return viewsB - viewsA;
+  });
+  const sortByViewBtn = document.getElementById("sort-by-view-btn");
+  sortByViewBtn.addEventListener("click", () => {
+    console.log("clicked");
+    sortByViewData();
+  });
+
+  videoContainer.innerHTML = "";
+  videos.forEach((video) => {
+    videoContainer.appendChild(video);
+  });
+}
+
 const blog = () => {
   window.location.href = "blog.html";
 };
